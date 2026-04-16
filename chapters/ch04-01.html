@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 01：如何讓自己生活悲慘 — 窮查理的普通常識</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Noto+Serif+TC:wght@300;400;500;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root { --gold: #B8860B; --gold-pale: #F5EDD0; --gold-faint: #FDF9F0; --ink: #1A1208; --ink-mid: #3D2E10; --ink-muted: #7A6A4A; --ink-faint: #B8A882; --cream: #FAF6EE; --cream-dark: #F0E9D8; --border: rgba(184,134,11,0.2); --border-strong: rgba(184,134,11,0.45); }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--cream); color: var(--ink); font-family: 'Noto Serif TC', serif; font-weight: 300; line-height: 1.8; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(250,246,238,0.92); backdrop-filter: blur(8px); border-bottom: 0.5px solid var(--border-strong); padding: 0 2rem; height: 56px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-brand { font-family: 'Noto Serif TC', serif; font-size: 13px; font-weight: 500; letter-spacing: 0.15em; color: var(--gold); text-decoration: none; }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a { font-family: 'Noto Sans TC', sans-serif; font-size: 13px; color: var(--ink-muted); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold); }
+  .chapter-hero { padding: 120px 2rem 60px; max-width: 800px; margin: 0 auto; border-bottom: 0.5px solid var(--border); }
+  .chapter-eyebrow { font-family: 'Noto Sans TC', sans-serif; font-size: 11px; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; margin-bottom: 1rem; }
+  .chapter-hero h1 { font-family: 'Playfair Display', 'Noto Serif TC', serif; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900; color: var(--ink); line-height: 1.2; margin-bottom: 1.5rem; }
+  .chapter-hero-desc { font-size: 1.05rem; color: var(--ink-muted); font-weight: 300; line-height: 2; max-width: 600px; }
+  .chapter-opening-quote { margin-top: 2.5rem; padding: 1.5rem 2rem; border-left: 3px solid var(--gold); background: var(--gold-faint); }
+  .chapter-opening-quote p { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-style: italic; color: var(--ink-mid); line-height: 1.8; }
+  main { max-width: 800px; margin: 0 auto; padding: 0 2rem 6rem; }
+  .content-section { padding: 3.5rem 0; border-bottom: 0.5px solid var(--border); }
+  .section-heading { font-family: 'Playfair Display', 'Noto Serif TC', serif; font-size: 1.5rem; font-weight: 700; color: var(--ink); margin-bottom: 1.5rem; }
+  .concepts-grid { display: grid; gap: 1rem; }
+  .concept-item { padding: 1.25rem 1.5rem; border: 0.5px solid var(--border); background: var(--gold-faint); transition: border-color 0.2s; }
+  .concept-item:hover { border-color: var(--border-strong); }
+  .concept-title { font-family: 'Noto Serif TC', serif; font-size: 0.95rem; font-weight: 500; color: var(--gold); margin-bottom: 6px; }
+  .concept-body { font-family: 'Noto Sans TC', sans-serif; font-size: 14px; color: var(--ink-mid); line-height: 1.8; }
+  .quotes-list { display: grid; gap: 1.5rem; }
+  .quote-block { padding: 1.5rem 1.75rem; border: 0.5px solid var(--border-strong); background: var(--cream-dark); position: relative; }
+  .quote-block::before { content: '"'; position: absolute; top: -0.5rem; left: 1.5rem; font-family: 'Playfair Display', serif; font-size: 4rem; color: var(--gold-pale); line-height: 1; pointer-events: none; }
+  .quote-en { font-family: 'Playfair Display', serif; font-style: italic; font-size: 14px; color: var(--ink-faint); margin-bottom: 8px; line-height: 1.7; }
+  .quote-zh { font-family: 'Noto Serif TC', serif; font-size: 1rem; color: var(--ink-mid); line-height: 1.9; }
+  .action-box { margin-top: 3.5rem; padding: 2rem 2.5rem; background: var(--ink); position: relative; }
+  .action-box::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--gold); }
+  .action-label { font-family: 'Noto Sans TC', sans-serif; font-size: 11px; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; margin-bottom: 1rem; }
+  .action-text { font-family: 'Noto Serif TC', serif; font-size: 1rem; color: var(--gold-pale); line-height: 2; }
+  .chapter-nav { margin-top: 4rem; padding-top: 2rem; border-top: 0.5px solid var(--border-strong); display: flex; justify-content: space-between; align-items: center; }
+  .nav-btn { font-family: 'Noto Sans TC', sans-serif; font-size: 13px; color: var(--ink-muted); text-decoration: none; transition: color 0.2s; }
+  .nav-btn:hover { color: var(--gold); }
+
+  footer {
+    border-top: 0.5px solid var(--border-strong);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    background: var(--cream-dark);
+  }
+  footer p {
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 12px;
+    color: var(--ink-faint);
+    letter-spacing: 0.05em;
+    line-height: 2;
+  }
+  footer a { color: var(--gold); text-decoration: none; }
+</style>
+</head>
+<body>
+<nav>
+  <a href="../index.html" class="nav-brand">窮查理的普通常識</a>
+  <div class="nav-links"><a href="../index.html">目錄</a><a href="ch04-02.html">下一篇 →</a></div>
+</nav>
+<div class="chapter-hero">
+  <div class="chapter-eyebrow">Chapter 04 · Lesson 01 · 演講篇</div>
+  <h1>如何讓自己生活悲慘</h1>
+  <p class="chapter-hero-desc">畢業演講中，蒙格運用「反向思考」的技巧，不教導畢業生如何獲得幸福，而是開出七道「保證讓生活陷入悲慘與失敗」的處方。</p>
+  <div class="chapter-opening-quote"><p>「我希望知道我會死在哪裡，這樣我就永遠不會去那裡。」</p></div>
+</div>
+<main>
+  <div class="content-section">
+    <div class="section-heading">🔑 核心觀念</div>
+    <div class="concepts-grid"><div class="concept-item"><div class="concept-title">反向思考 (Inversion)</div><div class="concept-body">許多困難的問題只有在「反過來想」時才能找到最佳解答；與其思考如何成功，不如先研究如何保證失敗。</div></div>
+<div class="concept-item"><div class="concept-title">遠離化學成癮</div><div class="concept-body">透過藥物或酒精改變情緒，是一條極其危險且通往毀滅的捷徑。</div></div>
+<div class="concept-item"><div class="concept-title">極致的可靠性</div><div class="concept-body">如果你不值得信任、不履行承諾，這個單一缺點就足以抵消你身上所有的才華與美德。</div></div>
+<div class="concept-item"><div class="concept-title">替代性學習</div><div class="concept-body">盡可能從別人的成功與災難中學習（站在巨人的肩膀上），只靠自己盲目試錯注定走向平庸與災難。</div></div>
+<div class="concept-item"><div class="concept-title">逆境中的韌性</div><div class="concept-body">在人生的戰場上遭遇沉重打擊是常態，面對挫折絕對不能倒下就不起來。</div></div>
+<div class="concept-item"><div class="concept-title">極度客觀與自我批判</div><div class="concept-body">必須像達爾文一樣，主動尋找並正視那些能推翻自己最珍愛觀念的反方證據。</div></div>
+</div>
+  </div>
+  <div class="content-section">
+    <div class="section-heading">💬 演講金句</div>
+    <div class="quotes-list"><div class="quote-block"><div class="quote-en">"I wish I knew where I was going to die, and then I'd never go there."</div><div class="quote-zh">我希望知道我會死在哪裡，這樣我就永遠不會去那裡。</div></div>
+<div class="quote-block"><div class="quote-en">"Life is hard enough to swallow without squeezing in the bitter rind of resentment."</div><div class="quote-zh">生活已經夠難下嚥了，何必再擠進怨恨的苦皮。</div></div>
+<div class="quote-block"><div class="quote-en">"If at first you don't succeed, well, so much for hang gliding."</div><div class="quote-zh">如果一開始你沒成功，好吧，那滑翔翼這個運動不適合你。</div></div>
+</div>
+  </div>
+  <div class="action-box">
+    <div class="action-label">⚡ 行動建議</div>
+    <div class="action-text">想成功，先搞清楚什麼會讓你徹底毀滅（吸毒、嫉妒、不可靠、不學前人教訓），然後死都別碰！</div>
+  </div>
+  <div class="chapter-nav">
+    <a href="ch03.html" class="nav-btn">← 上一篇</a>
+    <a href="ch04-02.html" class="nav-btn">下一篇 →</a>
+  </div>
+</main>
+<footer>
+  <p>
+    基於《Poor Charlie's Almanack》by Charlie Munger &amp; Peter D. Kaufman<br>
+    僅供個人學習與研究使用 · <a href="https://github.com/hsinjou-feng/" target="_blank">@hsinjou-feng</a>
+  </p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 03：蒙格主義 — 窮查理的普通常識</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Noto+Serif+TC:wght@300;400;500;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root { --gold: #B8860B; --gold-pale: #F5EDD0; --gold-faint: #FDF9F0; --ink: #1A1208; --ink-mid: #3D2E10; --ink-muted: #7A6A4A; --ink-faint: #B8A882; --cream: #FAF6EE; --cream-dark: #F0E9D8; --border: rgba(184,134,11,0.2); --border-strong: rgba(184,134,11,0.45); }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--cream); color: var(--ink); font-family: 'Noto Serif TC', serif; font-weight: 300; line-height: 1.8; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(250,246,238,0.92); backdrop-filter: blur(8px); border-bottom: 0.5px solid var(--border-strong); padding: 0 2rem; height: 56px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-brand { font-family: 'Noto Serif TC', serif; font-size: 13px; font-weight: 500; letter-spacing: 0.15em; color: var(--gold); text-decoration: none; }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a { font-family: 'Noto Sans TC', sans-serif; font-size: 13px; color: var(--ink-muted); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold); }
+  .chapter-hero { padding: 120px 2rem 60px; max-width: 800px; margin: 0 auto; border-bottom: 0.5px solid var(--border); }
+  .chapter-eyebrow { font-family: 'Noto Sans TC', sans-serif; font-size: 11px; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; margin-bottom: 1rem; }
+  .chapter-hero h1 { font-family: 'Playfair Display', 'Noto Serif TC', serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; color: var(--ink); line-height: 1.2; margin-bottom: 1.5rem; }
+  .chapter-hero-desc { font-size: 1.05rem; color: var(--ink-muted); font-weight: 300; line-height: 2; max-width: 600px; }
+  .chapter-opening-quote { margin-top: 2.5rem; padding: 1.5rem 2rem; border-left: 3px solid var(--gold); background: var(--gold-faint); }
+  .chapter-opening-quote p { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-style: italic; color: var(--ink-mid); line-height: 1.8; }
+  main { max-width: 800px; margin: 0 auto; padding: 0 2rem 6rem; }
+  .content-section { padding: 3.5rem 0; border-bottom: 0.5px solid var(--border); }
+  .section-heading { font-family: 'Playfair Display', 'Noto Serif TC', serif; font-size: 1.5rem; font-weight: 700; color: var(--ink); margin-bottom: 1.5rem; }
+  .story-item { margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 0.5px dashed var(--border); }
+  .story-item:last-child { border-bottom: none; margin-bottom: 0; }
+  .story-title { font-family: 'Noto Serif TC', serif; font-size: 1rem; font-weight: 500; color: var(--ink); margin-bottom: 0.75rem; display: flex; align-items: baseline; gap: 0.6rem; }
+  .story-title::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--gold); flex-shrink: 0; vertical-align: middle; position: relative; top: -3px; }
+  .story-body { font-size: 15px; color: var(--ink-mid); line-height: 2; padding-left: 1.75rem; }
+  .story-body strong { color: var(--ink); font-weight: 500; }
+  .concepts-grid { display: grid; gap: 1rem; }
+  .concept-item { padding: 1.25rem 1.5rem; border: 0.5px solid var(--border); background: var(--gold-faint); transition: border-color 0.2s; }
+  .concept-item:hover { border-color: var(--border-strong); }
+  .concept-title { font-family: 'Noto Serif TC', serif; font-size: 0.95rem; font-weight: 500; color: var(--gold); margin-bottom: 6px; }
+  .concept-body { font-family: 'Noto Sans TC', sans-serif; font-size: 14px; color: var(--ink-mid); line-height: 1.8; }
+  .quotes-list { display: grid; gap: 1.5rem; }
+  .quote-block { padding: 1.5rem 1.75rem; border: 0.5px solid var(--border-strong); background: var(--cream-dark); position: relative; }
+  .quote-block::before { content: '"'; position: absolute; top: -0.5rem; left: 1.5rem; font-family: 'Playfair Display', serif; font-size: 4rem; color: var(--gold-pale); line-height: 1; pointer-events: none; }
+  .quote-en { font-family: 'Playfair Display', serif; font-style: italic; font-size: 14px; color: var(--ink-faint); margin-bottom: 8px; line-height: 1.7; }
+  .quote-zh { font-family: 'Noto Serif TC', serif; font-size: 1rem; color: var(--ink-mid); line-height: 1.9; }
+  .action-box { margin-top: 3.5rem; padding: 2rem 2.5rem; background: var(--ink); position: relative; }
+  .action-box::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--gold); }
+  .action-label { font-family: 'Noto Sans TC', sans-serif; font-size: 11px; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; margin-bottom: 1rem; }
+  .action-text { font-family: 'Noto Serif TC', serif; font-size: 1rem; color: var(--gold-pale); line-height: 2; }
+  .chapter-nav { margin-top: 4rem; padding-top: 2rem; border-top: 0.5px solid var(--border-strong); display: flex; justify-content: space-between; align-items: center; }
+  .nav-btn { font-family: 'Noto Sans TC', sans-serif; font-size: 13px; color: var(--ink-muted); text-decoration: none; transition: color 0.2s; }
+  .nav-btn:hover { color: var(--gold); }
+
+  footer {
+    border-top: 0.5px solid var(--border-strong);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    background: var(--cream-dark);
+  }
+  footer p {
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 12px;
+    color: var(--ink-faint);
+    letter-spacing: 0.05em;
+    line-height: 2;
+  }
+  footer a { color: var(--gold); text-decoration: none; }
+</style>
+</head>
+<body>
+<nav>
+  <a href="../index.html" class="nav-brand">窮查理的普通常識</a>
+  <div class="nav-links"><a href="../index.html">目錄</a><a href="ch04-01.html">下一章 →</a></div>
+</nav>
+<div class="chapter-hero">
+  <div class="chapter-eyebrow">Chapter 03 · 思想篇</div>
+  <h1>蒙格主義</h1>
+  <p class="chapter-hero-desc">理解「普世智慧」（Worldly Wisdom）的核心門徑，勾勒跨學科思考與思維模型的基本框架，是進入深層理論前的關鍵準備。</p>
+  <div class="chapter-opening-quote">
+    <p>「如果你只養成這一個壞習慣（不可靠），它將足以抵消你所有美德的總和。」</p>
+  </div>
+</div>
+<main>
+  <div class="content-section">
+    <div class="section-heading">📖 故事摘要</div>
+    <div class="story-item">
+      <div class="story-title">「不」先生的精準刻度</div>
+      <p class="story-body">巴菲特開玩笑說，他會根據蒙格拒絕的「語氣」來決定投資規模。如果蒙格說「不」，他們就重倉買進；如果蒙格說「這是我聽過最蠢的事」，他們就只會適度投資。<strong>拒絕的品質反映判斷的深度。</strong></p>
+    </div>
+    <div class="story-item">
+      <div class="story-title">瑪莎·史都華的牢獄之災</div>
+      <p class="story-body">瑪莎·史都華並非因為原本的行為入獄，而是因為她聽到消息後恐慌賣股，並在調查時對調查員說謊。如果她一開始就說實話就沒事了，這證明了<strong>「說謊掩蓋」的代價遠大於承認錯誤</strong>。</p>
+    </div>
+    <div class="story-item">
+      <div class="story-title">所羅門兄弟與「跳票捷克人」</div>
+      <p class="story-body">所羅門兄弟為了賺取手續費，竟乞求與惡名昭彰的勞勃·麥斯威爾做生意，甚至在蒙格等人強烈警告對方是騙子後依然故我，最終陷入醜聞與爛帳。<strong>貪婪使人失去基本判斷力。</strong></p>
+    </div>
+    <div class="story-item">
+      <div class="story-title">索羅斯基金的科技股慘案</div>
+      <p class="story-body">索羅斯旗下的明星經理人因為無法忍受看到別人在科技股與生技股上賺錢比自己快，最終打破原則盲目追高，結果慘遭市場血洗，這證明了<strong>「嫉妒」在投資中極具殺傷力</strong>。</p>
+    </div>
+  </div>
+  <div class="content-section">
+    <div class="section-heading">🔑 核心觀念</div>
+    <div class="concepts-grid">
+      <div class="concept-item"><div class="concept-title">能力圈的三個籃子</div><div class="concept-body">面對投資機會，蒙格只用三個籃子分類：「是」、「否」與「太難以理解」。只要沒有特殊的洞察力，就直接丟進「太難」的籃子裡。</div></div>
+      <div class="concept-item"><div class="concept-title">專注與坐著不動的投資法</div><div class="concept-body">等待極少數的「絕佳好球」（Fat pitch）重倉出擊。一旦以便宜的價格買進了少數偉大的公司，最好的做法就是「坐著不動」，省下大量的交易摩擦成本與稅金。</div></div>
+      <div class="concept-item"><div class="concept-title">最致命的「遺漏之過」</div><div class="concept-body">波克夏歷史上最嚴重的錯誤不是做錯決定，而是「看懂了卻沒有行動」（例如錯失重倉沃爾瑪的機會），這些沒有顯現在財務報表上的機會成本高達數十億美元。</div></div>
+      <div class="concept-item"><div class="concept-title">誠實的寬闊邊界</div><div class="concept-body">在「合法不坐牢」與「應該做的事」之間，應該保持一道巨大的道德防火牆。絕不要靠近那條底線，因為誠實本身就是最好的策略，甚至能幫你賺更多錢。</div></div>
+      <div class="concept-item"><div class="concept-title">嫉妒是最愚蠢的罪</div><div class="concept-body">在所有的罪惡中，嫉妒是唯一不會帶來任何樂趣、只會帶來純粹痛苦的情緒，完全不該沾染。</div></div>
+      <div class="concept-item"><div class="concept-title">持續學習的機器</div><div class="concept-body">沒有任何聰明人是不大量閱讀的。如果你不持續學習，別人就會超越你；成功是一天天累積的，而不是靠突然的衝刺。</div></div>
+    </div>
+  </div>
+  <div class="content-section">
+    <div class="section-heading">💬 書中金句</div>
+    <div class="quotes-list">
+      <div class="quote-block"><div class="quote-en">"If you tell the truth, you don't have to remember your lies."</div><div class="quote-zh">只要你說實話，就不必記住你的謊言。</div></div>
+      <div class="quote-block"><div class="quote-en">"Capitalism without failure is like religion without hell."</div><div class="quote-zh">沒有失敗的資本主義，就像是沒有地獄的宗教。</div></div>
+      <div class="quote-block"><div class="quote-en">"In my whole life, I have known no wise people who didn't read all the time—none, zero."</div><div class="quote-zh">在我的一生中，我沒有見過任何一個有智慧的人不是一直在閱讀的——沒有，一個都沒有。</div></div>
+      <div class="quote-block"><div class="quote-en">"The idea of caring that someone is making money faster than you are is one of the deadly sins... it's the only one you could never possibly have any fun at."</div><div class="quote-zh">在意別人賺錢比你快，是其中一種致命的罪。嫉妒是唯一你絕對無法從中得到任何樂趣的罪。</div></div>
+    </div>
+  </div>
+  <div class="action-box">
+    <div class="action-label">⚡ 行動建議</div>
+    <div class="action-text">守住能力圈，拒絕爛會計與嫉妒心；只在看懂的絕佳好球出現時重倉揮棒，然後坐著不動，並用一生去閱讀與學習。</div>
+  </div>
+  <div class="chapter-nav">
+    <a href="ch02.html" class="nav-btn">← 第 2 章：蒙格家的小孩談查理</a>
+    <a href="ch04-01.html" class="nav-btn">演講篇：Lesson 01 →</a>
+  </div>
+</main>
+<footer>
+  <p>
+    基於《Poor Charlie's Almanack》by Charlie Munger &amp; Peter D. Kaufman<br>
+    僅供個人學習與研究使用 · <a href="https://github.com/hsinjou-feng/" target="_blank">@hsinjou-feng</a>
+  </p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 11：人類誤判心理學 — 窮查理的普通常識</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Noto+Serif+TC:wght@300;400;500;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root { --gold: #B8860B; --gold-pale: #F5EDD0; --gold-faint: #FDF9F0; --ink: #1A1208; --ink-mid: #3D2E10; --ink-muted: #7A6A4A; --ink-faint: #B8A882; --cream: #FAF6EE; --cream-dark: #F0E9D8; --border: rgba(184,134,11,0.2); --border-strong: rgba(184,134,11,0.45); }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--cream); color: var(--ink); font-family: 'Noto Serif TC', serif; font-weight: 300; line-height: 1.8; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(250,246,238,0.92); backdrop-filter: blur(8px); border-bottom: 0.5px solid var(--border-strong); padding: 0 2rem; height: 56px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-brand { font-family: 'Noto Serif TC', serif; font-size: 13px; font-weight: 500; letter-spacing: 0.15em; color: var(--gold); text-decoration: none; }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a { font-family: 'Noto Sans TC', sans-serif; font-size: 13px; color: var(--ink-muted); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold); }
+  .chapter-hero { padding: 120px 2rem 60px; max-width: 800px; margin: 0 auto; border-bottom: 0.5px solid var(--border); }
+  .chapter-eyebrow { font-family: 'Noto Sans TC', sans-serif; font-size: 11px; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; margin-bottom: 1rem; }
+  .chapter-hero h1 { font-family: 'Playfair Display', 'Noto Serif TC', serif; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900; color: var(--ink); line-height: 1.2; margin-bottom: 1.5rem; }
+  .chapter-hero-desc { font-size: 1.05rem; color: var(--ink-muted); font-weight: 300; line-height: 2; max-width: 600px; }
+  .chapter-opening-quote { margin-top: 2.5rem; padding: 1.5rem 2rem; border-left: 3px solid var(--gold); background: var(--gold-faint); }
+  .chapter-opening-quote p { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-style: italic; color: var(--ink-mid); line-height: 1.8; }
+  main { max-width: 800px; margin: 0 auto; padding: 0 2rem 6rem; }
+  .content-section { padding: 3.5rem 0; border-bottom: 0.5px solid var(--border); }
+  .section-heading { font-family: 'Playfair Display', 'Noto Serif TC', serif; font-size: 1.5rem; font-weight: 700; color: var(--ink); margin-bottom: 1.5rem; }
+  .concepts-grid { display: grid; gap: 1rem; }
+  .concept-item { padding: 1.25rem 1.5rem; border: 0.5px solid var(--border); background: var(--gold-faint); transition: border-color 0.2s; }
+  .concept-item:hover { border-color: var(--border-strong); }
+  .concept-title { font-family: 'Noto Serif TC', serif; font-size: 0.95rem; font-weight: 500; color: var(--gold); margin-bottom: 6px; }
+  .concept-body { font-family: 'Noto Sans TC', sans-serif; font-size: 14px; color: var(--ink-mid); line-height: 1.8; }
+  .quotes-list { display: grid; gap: 1.5rem; }
+  .quote-block { padding: 1.5rem 1.75rem; border: 0.5px solid var(--border-strong); background: var(--cream-dark); position: relative; }
+  .quote-block::before { content: '"'; position: absolute; top: -0.5rem; left: 1.5rem; font-family: 'Playfair Display', serif; font-size: 4rem; color: var(--gold-pale); line-height: 1; pointer-events: none; }
+  .quote-en { font-family: 'Playfair Display', serif; font-style: italic; font-size: 14px; color: var(--ink-faint); margin-bottom: 8px; line-height: 1.7; }
+  .quote-zh { font-family: 'Noto Serif TC', serif; font-size: 1rem; color: var(--ink-mid); line-height: 1.9; }
+  .action-box { margin-top: 3.5rem; padding: 2rem 2.5rem; background: var(--ink); position: relative; }
+  .action-box::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--gold); }
+  .action-label { font-family: 'Noto Sans TC', sans-serif; font-size: 11px; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; margin-bottom: 1rem; }
+  .action-text { font-family: 'Noto Serif TC', serif; font-size: 1rem; color: var(--gold-pale); line-height: 2; }
+  .chapter-nav { margin-top: 4rem; padding-top: 2rem; border-top: 0.5px solid var(--border-strong); display: flex; justify-content: space-between; align-items: center; }
+  .nav-btn { font-family: 'Noto Sans TC', sans-serif; font-size: 13px; color: var(--ink-muted); text-decoration: none; transition: color 0.2s; }
+  .nav-btn:hover { color: var(--gold); }
+
+  footer {
+    border-top: 0.5px solid var(--border-strong);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    background: var(--cream-dark);
+  }
+  footer p {
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 12px;
+    color: var(--ink-faint);
+    letter-spacing: 0.05em;
+    line-height: 2;
+  }
+  footer a { color: var(--gold); text-decoration: none; }
+</style>
+</head>
+<body>
+<nav>
+  <a href="../index.html" class="nav-brand">窮查理的普通常識</a>
+  <div class="nav-links"><a href="../index.html">目錄</a><a href="../index.html">下一篇 →</a></div>
+</nav>
+<div class="chapter-hero">
+  <div class="chapter-eyebrow">Chapter 04 · Lesson 11 · 演講篇</div>
+  <h1>人類誤判心理學</h1>
+  <p class="chapter-hero-desc">蒙格總結了 25 種導致人類誤判的心理傾向，指出這些根植於演化的直覺，在複雜的現代社會中卻常導致災難性的錯誤。唯一的解藥是將這 25 項傾向熟記於心，在決策前逐一核對。</p>
+  <div class="chapter-opening-quote"><p>「管理學中最重要的一條規則就是：『制定正確的誘因』。」</p></div>
+</div>
+<main>
+  <div class="content-section">
+    <div class="section-heading">🔑 核心觀念</div>
+    <div class="concepts-grid"><div class="concept-item"><div class="concept-title">獎懲超級反應傾向</div><div class="concept-body">人類行為極度受誘因（獎勵與懲罰）驅使，人們甚至會為了獲得獎勵而潛意識地合理化自己的不道德行為。</div></div>
+<div class="concept-item"><div class="concept-title">被剝奪超級反應傾向</div><div class="concept-body">失去（或差點得到卻失去）某事物的痛苦，遠大於獲得同等事物的快樂，這往往是賭徒無法自拔的主因。</div></div>
+<div class="concept-item"><div class="concept-title">社會認同傾向</div><div class="concept-body">在壓力或困惑下，人會自動模仿周遭群體的想法與行為（猴子學樣）。</div></div>
+<div class="concept-item"><div class="concept-title">避免不一致傾向</div><div class="concept-body">大腦為了節省運算空間，會極力抗拒改變既有的習慣、結論或身分認同。</div></div>
+<div class="concept-item"><div class="concept-title">魯拉帕路薩傾向</div><div class="concept-body">當多種心理傾向同時朝同一個方向發揮作用時，會產生極端的爆發性後果。</div></div>
+<div class="concept-item"><div class="concept-title">對比誤導反應傾向</div><div class="concept-body">大腦習慣依賴「對比」而非絕對數值來感知世界，常導致人們在漸進的微小變化中失去警覺，最終走向災難。</div></div>
+<div class="concept-item"><div class="concept-title">易取得性誤導傾向</div><div class="concept-body">大腦會過度看重容易記住或特別生動的資訊，而忽略真正重要卻不易取得的數據。</div></div>
+<div class="concept-item"><div class="concept-title">過度自視傾向</div><div class="concept-body">人們通常會過度高估自己的能力、伴侶、孩子，甚至是自己已經擁有的物品（即稟賦效應）。</div></div>
+</div>
+  </div>
+  <div class="content-section">
+    <div class="section-heading">💬 演講金句</div>
+    <div class="quotes-list"><div class="quote-block"><div class="quote-en">"Perhaps the most important rule in management is 'Get the incentives right.'"</div><div class="quote-zh">管理學中最重要的一條規則就是：「制定正確的誘因」。</div></div>
+<div class="quote-block"><div class="quote-en">"What a man wishes, that also will he believe."</div><div class="quote-zh">一個人所期望的，也就是他會相信的。</div></div>
+<div class="quote-block"><div class="quote-en">"Never underestimate the man who overestimates himself."</div><div class="quote-zh">永遠不要低估那些高估自己的人。</div></div>
+<div class="quote-block"><div class="quote-en">"An ounce of prevention is worth a pound of cure."</div><div class="quote-zh">一盎司的預防勝過一磅的治療。</div></div>
+</div>
+  </div>
+  <div class="action-box">
+    <div class="action-label">⚡ 行動建議</div>
+    <div class="action-text">熟記這 25 個人類心理盲點並化為決策檢查清單，特別當心多重誘因疊加時產生的極端效應，用客觀戰勝你的原始大腦！</div>
+  </div>
+  <div class="chapter-nav">
+    <a href="ch04-10.html" class="nav-btn">← 上一篇</a>
+    <a href="../index.html" class="nav-btn">下一篇 →</a>
+  </div>
+</main>
+<footer>
+  <p>
+    基於《Poor Charlie's Almanack》by Charlie Munger &amp; Peter D. Kaufman<br>
+    僅供個人學習與研究使用 · <a href="https://github.com/hsinjou-feng/" target="_blank">@hsinjou-feng</a>
+  </p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 05：專業人士需要更多跨領域技能 — 窮查理的普通常識</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Noto+Serif+TC:wght@300;400;500;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root { --gold: #B8860B; --gold-pale: #F5EDD0; --gold-faint: #FDF9F0; --ink: #1A1208; --ink-mid: #3D2E10; --ink-muted: #7A6A4A; --ink-faint: #B8A882; --cream: #FAF6EE; --cream-dark: #F0E9D8; --border: rgba(184,134,11,0.2); --border-strong: rgba(184,134,11,0.45); }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--cream); color: var(--ink); font-family: 'Noto Serif TC', serif; font-weight: 300; line-height: 1.8; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(250,246,238,0.92); backdrop-filter: blur(8px); border-bottom: 0.5px solid var(--border-strong); padding: 0 2rem; height: 56px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-brand { font-family: 'Noto Serif TC', serif; font-size: 13px; font-weight: 500; letter-spacing: 0.15em; color: var(--gold); text-decoration: none; }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a { font-family: 'Noto Sans TC', sans-serif; font-size: 13px; color: var(--ink-muted); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold); }
+  .chapter-hero { padding: 120px 2rem 60px; max-width: 800px; margin: 0 auto; border-bottom: 0.5px solid var(--border); }
+  .chapter-eyebrow { font-family: 'Noto Sans TC', sans-serif; font-size: 11px; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; margin-bottom: 1rem; }
+  .chapter-hero h1 { font-family: 'Playfair Display', 'Noto Serif TC', serif; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900; color: var(--ink); line-height: 1.2; margin-bottom: 1.5rem; }
+  .chapter-hero-desc { font-size: 1.05rem; color: var(--ink-muted); font-weight: 300; line-height: 2; max-width: 600px; }
+  .chapter-opening-quote { margin-top: 2.5rem; padding: 1.5rem 2rem; border-left: 3px solid var(--gold); background: var(--gold-faint); }
+  .chapter-opening-quote p { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-style: italic; color: var(--ink-mid); line-height: 1.8; }
+  main { max-width: 800px; margin: 0 auto; padding: 0 2rem 6rem; }
+  .content-section { padding: 3.5rem 0; border-bottom: 0.5px solid var(--border); }
+  .section-heading { font-family: 'Playfair Display', 'Noto Serif TC', serif; font-size: 1.5rem; font-weight: 700; color: var(--ink); margin-bottom: 1.5rem; }
+  .concepts-grid { display: grid; gap: 1rem; }
+  .concept-item { padding: 1.25rem 1.5rem; border: 0.5px solid var(--border); background: var(--gold-faint); transition: border-color 0.2s; }
+  .concept-item:hover { border-color: var(--border-strong); }
+  .concept-title { font-family: 'Noto Serif TC', serif; font-size: 0.95rem; font-weight: 500; color: var(--gold); margin-bottom: 6px; }
+  .concept-body { font-family: 'Noto Sans TC', sans-serif; font-size: 14px; color: var(--ink-mid); line-height: 1.8; }
+  .quotes-list { display: grid; gap: 1.5rem; }
+  .quote-block { padding: 1.5rem 1.75rem; border: 0.5px solid var(--border-strong); background: var(--cream-dark); position: relative; }
+  .quote-block::before { content: '"'; position: absolute; top: -0.5rem; left: 1.5rem; font-family: 'Playfair Display', serif; font-size: 4rem; color: var(--gold-pale); line-height: 1; pointer-events: none; }
+  .quote-en { font-family: 'Playfair Display', serif; font-style: italic; font-size: 14px; color: var(--ink-faint); margin-bottom: 8px; line-height: 1.7; }
+  .quote-zh { font-family: 'Noto Serif TC', serif; font-size: 1rem; color: var(--ink-mid); line-height: 1.9; }
+  .action-box { margin-top: 3.5rem; padding: 2rem 2.5rem; background: var(--ink); position: relative; }
+  .action-box::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--gold); }
+  .action-label { font-family: 'Noto Sans TC', sans-serif; font-size: 11px; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; margin-bottom: 1rem; }
+  .action-text { font-family: 'Noto Serif TC', serif; font-size: 1rem; color: var(--gold-pale); line-height: 2; }
+  .chapter-nav { margin-top: 4rem; padding-top: 2rem; border-top: 0.5px solid var(--border-strong); display: flex; justify-content: space-between; align-items: center; }
+  .nav-btn { font-family: 'Noto Sans TC', sans-serif; font-size: 13px; color: var(--ink-muted); text-decoration: none; transition: color 0.2s; }
+  .nav-btn:hover { color: var(--gold); }
+
+  footer {
+    border-top: 0.5px solid var(--border-strong);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    background: var(--cream-dark);
+  }
+  footer p {
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 12px;
+    color: var(--ink-faint);
+    letter-spacing: 0.05em;
+    line-height: 2;
+  }
+  footer a { color: var(--gold); text-decoration: none; }
+</style>
+</head>
+<body>
+<nav>
+  <a href="../index.html" class="nav-brand">窮查理的普通常識</a>
+  <div class="nav-links"><a href="../index.html">目錄</a><a href="ch04-06.html">下一篇 →</a></div>
+</nav>
+<div class="chapter-hero">
+  <div class="chapter-eyebrow">Chapter 04 · Lesson 05 · 演講篇</div>
+  <h1>專業人士需要更多跨領域技能</h1>
+  <p class="chapter-hero-desc">蒙格主張，專業人士為了避免「誘因引起的偏見」與「鐵鎚人傾向」，必須效法「飛行員訓練」的嚴格模式，強制將所有基礎學科的核心觀念融會貫通為「檢查清單」。</p>
+  <div class="chapter-opening-quote"><p>「拿一個簡單的、基本的觀念，然後非常嚴肅地對待它。」</p></div>
+</div>
+<main>
+  <div class="content-section">
+    <div class="section-heading">🔑 核心觀念</div>
+    <div class="concepts-grid"><div class="concept-item"><div class="concept-title">防範兩大認知缺陷</div><div class="concept-body">專業人士常受「誘因引起的偏見」（潛意識認為對自己有利就是對客戶有利）以及「鐵鎚人傾向」所害，唯一的解藥是擁有跨越多個學科的龐大技能庫。</div></div>
+<div class="concept-item"><div class="concept-title">效法飛行員訓練系統</div><div class="concept-body">優質的教育應像機師訓練一樣包含六大要素：涵蓋所有實用知識、要求實際操作的熟練度、正反向思考並用、依重要性分配學習時間、強制使用「檢查清單」，以及定期使用「模擬器」維持技能。</div></div>
+<div class="concept-item"><div class="concept-title">掌握核心概念即可</div><div class="concept-body">不需要精通每個學科的艱澀細節，只要真正掌握並熟練運用各學科裡「真正重要的大觀念」，就足以解決大部分的問題。</div></div>
+<div class="concept-item"><div class="concept-title">警惕極端的意識形態</div><div class="concept-body">無論左右派，強烈且充滿熱情的政治意識形態會破壞大腦的客觀性，這類人無法達成跨學科的困難整合。</div></div>
+<div class="concept-item"><div class="concept-title">善用商業期刊作為「模擬器」</div><div class="concept-body">將閱讀《華爾街日報》、《富比士》等優質期刊作為日常練習，把發生的事件與跨學科原因串聯起來，是維持判斷力與智慧的最佳日常模擬訓練。</div></div>
+</div>
+  </div>
+  <div class="content-section">
+    <div class="section-heading">💬 演講金句</div>
+    <div class="quotes-list"><div class="quote-block"><div class="quote-en">"In the last analysis, every profession is a conspiracy against the laity."</div><div class="quote-zh">在最後的分析中，每一個專業都是針對外行人的共謀。</div></div>
+<div class="quote-block"><div class="quote-en">"Take a simple, basic idea and take it very seriously."</div><div class="quote-zh">拿一個簡單的、基本的觀念，然後非常嚴肅地對待它。</div></div>
+<div class="quote-block"><div class="quote-en">"Truth is hard to assimilate in any mind when opposed by interest."</div><div class="quote-zh">當真理與利益衝突時，任何大腦都很難吸收真理。</div></div>
+</div>
+  </div>
+  <div class="action-box">
+    <div class="action-label">⚡ 行動建議</div>
+    <div class="action-text">效法機師的嚴苛訓練，把各領域最基礎的核心觀念練到滾瓜爛熟並化為決策檢查清單，徹底消滅「只有一把鐵鎚」的致命盲點！</div>
+  </div>
+  <div class="chapter-nav">
+    <a href="ch04-04.html" class="nav-btn">← 上一篇</a>
+    <a href="ch04-06.html" class="nav-btn">下一篇 →</a>
+  </div>
+</main>
+<footer>
+  <p>
+    基於《Poor Charlie's Almanack》by Charlie Munger &amp; Peter D. Kaufman<br>
+    僅供個人學習與研究使用 · <a href="https://github.com/hsinjou-feng/" target="_blank">@hsinjou-feng</a>
+  </p>
+</footer>
+</body>
+</html>

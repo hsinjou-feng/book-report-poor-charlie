@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 01：查理·蒙格傳略 — 窮查理的普通常識</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Noto+Serif+TC:wght@300;400;500;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #B8860B;
+    --gold-light: #D4A017;
+    --gold-pale: #F5EDD0;
+    --gold-faint: #FDF9F0;
+    --ink: #1A1208;
+    --ink-mid: #3D2E10;
+    --ink-muted: #7A6A4A;
+    --ink-faint: #B8A882;
+    --cream: #FAF6EE;
+    --cream-dark: #F0E9D8;
+    --border: rgba(184,134,11,0.2);
+    --border-strong: rgba(184,134,11,0.45);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 300;
+    line-height: 1.8;
+  }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(250,246,238,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 0.5px solid var(--border-strong);
+    padding: 0 2rem;
+    height: 56px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-brand { font-family: 'Noto Serif TC', serif; font-size: 13px; font-weight: 500; letter-spacing: 0.15em; color: var(--gold); text-decoration: none; }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a { font-family: 'Noto Sans TC', sans-serif; font-size: 13px; font-weight: 400; color: var(--ink-muted); text-decoration: none; letter-spacing: 0.05em; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold); }
+
+  .chapter-hero {
+    padding: 120px 2rem 60px;
+    max-width: 800px;
+    margin: 0 auto;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .chapter-eyebrow {
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .chapter-hero h1 {
+    font-family: 'Playfair Display', 'Noto Serif TC', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    color: var(--ink);
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+  .chapter-hero-desc {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.05rem;
+    color: var(--ink-muted);
+    font-weight: 300;
+    line-height: 2;
+    max-width: 600px;
+  }
+  .chapter-opening-quote {
+    margin-top: 2.5rem;
+    padding: 1.5rem 2rem;
+    border-left: 3px solid var(--gold);
+    background: var(--gold-faint);
+  }
+  .chapter-opening-quote p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--ink-mid);
+    line-height: 1.8;
+  }
+
+  main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2rem 6rem;
+  }
+
+  /* SECTION BLOCK */
+  .content-section {
+    padding: 3.5rem 0;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .section-icon {
+    font-size: 22px;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .section-heading {
+    font-family: 'Playfair Display', 'Noto Serif TC', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .section-tag {
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    border: 0.5px solid var(--border-strong);
+    padding: 3px 10px;
+    vertical-align: middle;
+  }
+
+  /* STORY ITEMS */
+  .story-item {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 0.5px dashed var(--border);
+  }
+  .story-item:last-child { border-bottom: none; margin-bottom: 0; }
+  .story-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+    display: flex; align-items: baseline; gap: 0.6rem;
+  }
+  .story-title::before {
+    content: '';
+    display: inline-block;
+    width: 20px; height: 1px;
+    background: var(--gold);
+    flex-shrink: 0;
+    vertical-align: middle;
+    position: relative; top: -3px;
+  }
+  .story-body {
+    font-size: 15px;
+    color: var(--ink-mid);
+    line-height: 2;
+    padding-left: 1.75rem;
+  }
+  .story-body strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* CONCEPTS LIST */
+  .concepts-grid {
+    display: grid;
+    gap: 1rem;
+  }
+  .concept-item {
+    padding: 1.25rem 1.5rem;
+    border: 0.5px solid var(--border);
+    background: var(--gold-faint);
+    position: relative;
+    transition: border-color 0.2s;
+  }
+  .concept-item:hover { border-color: var(--border-strong); }
+  .concept-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .concept-body {
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 14px;
+    color: var(--ink-mid);
+    line-height: 1.8;
+  }
+
+  /* QUOTES */
+  .quotes-list { display: grid; gap: 1.5rem; }
+  .quote-block {
+    padding: 1.5rem 1.75rem;
+    border: 0.5px solid var(--border-strong);
+    background: var(--cream-dark);
+    position: relative;
+  }
+  .quote-block::before {
+    content: '"';
+    position: absolute; top: -0.5rem; left: 1.5rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    color: var(--gold-pale);
+    line-height: 1;
+    pointer-events: none;
+  }
+  .quote-en {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--ink-faint);
+    margin-bottom: 8px;
+    line-height: 1.7;
+  }
+  .quote-zh {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1rem;
+    color: var(--ink-mid);
+    line-height: 1.9;
+  }
+
+  /* CONCEPT DIAGRAM */
+  .diagram-box {
+    background: var(--ink);
+    padding: 2.5rem;
+    margin-top: 0;
+  }
+  .diagram-title {
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+  .diagram-row {
+    display: flex; align-items: center; gap: 1rem;
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+  }
+  .diagram-box-item {
+    background: rgba(184,134,11,0.12);
+    border: 0.5px solid rgba(184,134,11,0.4);
+    padding: 10px 18px;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 14px;
+    color: var(--gold-pale);
+  }
+  .diagram-op {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--gold);
+    font-weight: 700;
+  }
+  .diagram-eq {
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 13px;
+    color: rgba(245,237,208,0.6);
+    padding: 2px 0;
+  }
+  .diagram-result {
+    background: var(--gold);
+    padding: 10px 18px;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  /* ACTION BOX */
+  .action-box {
+    margin-top: 3.5rem;
+    padding: 2rem 2.5rem;
+    background: var(--ink);
+    position: relative;
+    overflow: hidden;
+  }
+  .action-box::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: var(--gold);
+  }
+  .action-label {
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .action-text {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1rem;
+    color: var(--gold-pale);
+    line-height: 2;
+  }
+
+  /* NAV BOTTOM */
+  .chapter-nav {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 0.5px solid var(--border-strong);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .nav-btn {
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 13px;
+    color: var(--ink-muted);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+    display: flex; align-items: center; gap: 0.5em;
+  }
+  .nav-btn:hover { color: var(--gold); }
+
+  footer {
+    border-top: 0.5px solid var(--border-strong);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    background: var(--cream-dark);
+  }
+  footer p {
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 12px;
+    color: var(--ink-faint);
+    letter-spacing: 0.05em;
+    line-height: 2;
+  }
+  footer a { color: var(--gold); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-brand">窮查理的普通常識</a>
+  <div class="nav-links">
+    <a href="../index.html">目錄</a>
+    <a href="ch02.html">下一章 →</a>
+  </div>
+</nav>
+
+<div class="chapter-hero">
+  <div class="chapter-eyebrow">Chapter 01 · 人物篇</div>
+  <h1>查理·蒙格傳略</h1>
+  <p class="chapter-hero-desc">
+    這不僅是生平紀錄，更是蒙格人格特質與知識體系的奠基石，解析他如何從法律背景轉向投資大師之路。
+  </p>
+  <div class="chapter-opening-quote">
+    <p>「任何想成功的人都應該學習物理學，因為它的概念和公式如此完美地展示了健全理論的力量。」</p>
+  </div>
+</div>
+
+<main>
+
+  <!-- STORY SECTION -->
+  <div class="content-section">
+    <div class="section-heading">
+      📖 故事摘要
+      <span class="section-tag">A Portrait</span>
+    </div>
+
+    <div class="story-item">
+      <div class="story-title">巴菲特爺爺的雜貨店</div>
+      <p class="story-body">蒙格年輕時在巴菲特祖父的雜貨店打工，經歷每天 12 小時無休、無餐的嚴苛勞動，並被迫上繳兩分錢的日薪以支付社會安全法案。這讓他學到了對社會主義的深刻反感，以及勤奮的真實意涵。</p>
+    </div>
+    <div class="story-item">
+      <div class="story-title">養倉鼠展現談判天賦</div>
+      <p class="story-body">小時候蒙格在地下室養倉鼠，透過與其他孩子交易，他總能換到體型更大或毛色特別的倉鼠，展現了<strong>早慧的精明談判能力</strong>。</p>
+    </div>
+    <div class="story-item">
+      <div class="story-title">步槍隊的微小英雄</div>
+      <p class="story-body">因年紀小且體型瘦弱，蒙格無法參加常規體育競賽，於是他加入步槍隊並成為隊長，靠著精準的槍法贏得校隊毛衣，並成功引起女學生的注意——<strong>找到自己的能力圈，揚長避短</strong>。</p>
+    </div>
+    <div class="story-item">
+      <div class="story-title">祖父拯救家族銀行</div>
+      <p class="story-body">經濟大恐慌時期，蒙格目睹身為聯邦法官的祖父冒著失去大半資產的風險，拿優質抵押貸款換取叔叔銀行裡的不良貸款，成功拯救銀行。這讓他深刻體會到<strong>家族團結互助的力量</strong>。</p>
+    </div>
+    <div class="story-item">
+      <div class="story-title">沒有大學文憑的哈佛法學博士</div>
+      <p class="story-body">蒙格憑藉退伍軍人法案申請哈佛法學院，雖無大學文憑一度受阻，但在前院長 Roscoe Pound 的協助下成功錄取，最終以<strong>極優異（magna cum laude）</strong>的成績畢業。</p>
+    </div>
+    <div class="story-item">
+      <div class="story-title">面對喪子之痛的堅韌</div>
+      <p class="story-body">蒙格 29 歲時婚姻破裂，且愛子 Teddy 罹患白血病，他經常在探望後於帕薩迪納街頭獨自痛哭。這段極大悲劇的磨練，奠定了他面對逆境的鋼鐵意志。</p>
+    </div>
+    <div class="story-item">
+      <div class="story-title">歷史性的初次相遇</div>
+      <p class="story-body">1959 年，透過共同好友的安排，蒙格與巴菲特在奧馬哈的一場晚宴上初識，兩人一見如故，整晚進行了涵蓋商業、金融與歷史的雙向深度對話，<strong>展開了長達數十年的傳奇合夥關係</strong>。</p>
+    </div>
+  </div>
+
+  <!-- CONCEPTS SECTION -->
+  <div class="content-section">
+    <div class="section-heading">
+      🔑 核心觀念
+    </div>
+    <div class="concepts-grid">
+      <div class="concept-item">
+        <div class="concept-title">結交「傑出的已故人物」</div>
+        <div class="concept-body">透過大量閱讀傳記，將歷史上的偉大思想家（如富蘭克林）當作朋友，是獲取世俗智慧與改善生活的最佳途徑。</div>
+      </div>
+      <div class="concept-item">
+        <div class="concept-title">物理學思維的威力</div>
+        <div class="concept-body">成功人士都應該學習物理學的思維方式，因為其概念和公式完美展示了「健全理論」在解決問題上的強大力量。</div>
+      </div>
+      <div class="concept-item">
+        <div class="concept-title">商業道德與誠信</div>
+        <div class="concept-body">在商業與法律實務中，不必賺走最後一塊錢，並且應該「像挑選朋友一樣挑選客戶」——誠信本身就是最好的策略。</div>
+      </div>
+      <div class="concept-item">
+        <div class="concept-title">跨領域的協同效應</div>
+        <div class="concept-body">蒙格與巴菲特的合作完美結合了兩人的優勢，能敏銳抓住其他商人忽視的機會，展現出極強的協同效應。</div>
+      </div>
+      <div class="concept-item">
+        <div class="concept-title">理性的極致發揮</div>
+        <div class="concept-body">巴菲特認為蒙格成功的最大秘訣在於他極度的「理性」——他天生具備理性的特質，並將其完美應用於商業決策中。</div>
+      </div>
+      <div class="concept-item">
+        <div class="concept-title">致富是為了獨立</div>
+        <div class="concept-body">財富本身不是最終目的，賺取財富是為了像凱因斯一樣獲得「獨立」，進而能專注於回饋社會與改善世界。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIAGRAM -->
+  <div class="content-section">
+    <div class="section-heading">🧠 概念圖解</div>
+    <div class="diagram-box">
+      <div class="diagram-title">蒙格的「效用公式」</div>
+      <div class="diagram-row">
+        <div class="diagram-box-item">你幫助的人數</div>
+        <div class="diagram-op">×</div>
+        <div class="diagram-box-item">每人得到的幫助</div>
+        <div class="diagram-op">=</div>
+        <div class="diagram-result">總效用 (Utility)</div>
+      </div>
+      <div class="diagram-eq">↑ 這才是衡量「成功」的真實方式，而非財富或名聲</div>
+
+      <div style="margin-top: 2rem; height: 0.5px; background: rgba(184,134,11,0.3);"></div>
+
+      <div style="margin-top: 2rem;">
+        <div class="diagram-title">蒙格的三大人生信條</div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-top: 1rem;">
+          <div style="padding: 1rem; border: 0.5px solid rgba(184,134,11,0.3); text-align: center;">
+            <div style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--gold); margin-bottom: 8px;">📚</div>
+            <div style="font-family: 'Noto Serif TC', serif; font-size: 13px; color: var(--gold-pale); line-height: 1.7;">結交傑出<br>已故人物</div>
+          </div>
+          <div style="padding: 1rem; border: 0.5px solid rgba(184,134,11,0.3); text-align: center;">
+            <div style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--gold); margin-bottom: 8px;">🎯</div>
+            <div style="font-family: 'Noto Serif TC', serif; font-size: 13px; color: var(--gold-pale); line-height: 1.7;">專注眼前<br>嚴控支出</div>
+          </div>
+          <div style="padding: 1rem; border: 0.5px solid rgba(184,134,11,0.3); text-align: center;">
+            <div style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--gold); margin-bottom: 8px;">🤝</div>
+            <div style="font-family: 'Noto Serif TC', serif; font-size: 13px; color: var(--gold-pale); line-height: 1.7;">誠信為本<br>不取最後一元</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUOTES -->
+  <div class="content-section">
+    <div class="section-heading">💬 書中金句</div>
+    <div class="quotes-list">
+      <div class="quote-block">
+        <div class="quote-en">"Anyone who wants to be successful should study physics because its concepts and formulas so beautifully demonstrate the powers of sound theory."</div>
+        <div class="quote-zh">任何想成功的人都應該學習物理學，因為它的概念和公式如此完美地展示了健全理論的力量。</div>
+      </div>
+      <div class="quote-block">
+        <div class="quote-en">"Concentrate on the task immediately in front of him and to control spending."</div>
+        <div class="quote-zh">專注於眼前的任務，並控制支出。</div>
+      </div>
+      <div class="quote-block">
+        <div class="quote-en">"You don't need to take the last dollar."</div>
+        <div class="quote-zh">你不必賺走最後一塊錢。</div>
+      </div>
+      <div class="quote-block">
+        <div class="quote-en">"Choose clients as you would friends."</div>
+        <div class="quote-zh">像挑選朋友一樣挑選客戶。</div>
+      </div>
+      <div class="quote-block">
+        <div class="quote-en">"If you go through life making friends with the eminent dead who had the right ideas, I think it will work better for you in life and work better in education."</div>
+        <div class="quote-zh">如果你在人生中與那些擁有正確思想的「傑出已故人物」交朋友，我認為這將使你的生活和教育更加順遂。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACTION -->
+  <div class="action-box">
+    <div class="action-label">⚡ 行動建議</div>
+    <div class="action-text">
+      極度理性地專注眼前任務，嚴格控制支出以換取真正的獨立，並永遠只和值得深交的客戶與傑出的已故思想家做朋友。
+    </div>
+  </div>
+
+  <div class="chapter-nav">
+    <a href="../index.html" class="nav-btn">← 回到目錄</a>
+    <a href="ch02.html" class="nav-btn">第 2 章：蒙格家的小孩談查理 →</a>
+  </div>
+
+</main>
+
+<footer>
+  <p>
+    基於《Poor Charlie's Almanack》by Charlie Munger &amp; Peter D. Kaufman<br>
+    僅供個人學習與研究使用 · <a href="https://github.com/hsinjou-feng/" target="_blank">@hsinjou-feng</a>
+  </p>
+</footer>
+</body>
+</html>

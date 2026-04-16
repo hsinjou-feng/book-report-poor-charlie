@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 06：像波克夏一樣投資 — 窮查理的普通常識</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Noto+Serif+TC:wght@300;400;500;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root { --gold: #B8860B; --gold-pale: #F5EDD0; --gold-faint: #FDF9F0; --ink: #1A1208; --ink-mid: #3D2E10; --ink-muted: #7A6A4A; --ink-faint: #B8A882; --cream: #FAF6EE; --cream-dark: #F0E9D8; --border: rgba(184,134,11,0.2); --border-strong: rgba(184,134,11,0.45); }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--cream); color: var(--ink); font-family: 'Noto Serif TC', serif; font-weight: 300; line-height: 1.8; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(250,246,238,0.92); backdrop-filter: blur(8px); border-bottom: 0.5px solid var(--border-strong); padding: 0 2rem; height: 56px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-brand { font-family: 'Noto Serif TC', serif; font-size: 13px; font-weight: 500; letter-spacing: 0.15em; color: var(--gold); text-decoration: none; }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a { font-family: 'Noto Sans TC', sans-serif; font-size: 13px; color: var(--ink-muted); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold); }
+  .chapter-hero { padding: 120px 2rem 60px; max-width: 800px; margin: 0 auto; border-bottom: 0.5px solid var(--border); }
+  .chapter-eyebrow { font-family: 'Noto Sans TC', sans-serif; font-size: 11px; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; margin-bottom: 1rem; }
+  .chapter-hero h1 { font-family: 'Playfair Display', 'Noto Serif TC', serif; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900; color: var(--ink); line-height: 1.2; margin-bottom: 1.5rem; }
+  .chapter-hero-desc { font-size: 1.05rem; color: var(--ink-muted); font-weight: 300; line-height: 2; max-width: 600px; }
+  .chapter-opening-quote { margin-top: 2.5rem; padding: 1.5rem 2rem; border-left: 3px solid var(--gold); background: var(--gold-faint); }
+  .chapter-opening-quote p { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-style: italic; color: var(--ink-mid); line-height: 1.8; }
+  main { max-width: 800px; margin: 0 auto; padding: 0 2rem 6rem; }
+  .content-section { padding: 3.5rem 0; border-bottom: 0.5px solid var(--border); }
+  .section-heading { font-family: 'Playfair Display', 'Noto Serif TC', serif; font-size: 1.5rem; font-weight: 700; color: var(--ink); margin-bottom: 1.5rem; }
+  .concepts-grid { display: grid; gap: 1rem; }
+  .concept-item { padding: 1.25rem 1.5rem; border: 0.5px solid var(--border); background: var(--gold-faint); transition: border-color 0.2s; }
+  .concept-item:hover { border-color: var(--border-strong); }
+  .concept-title { font-family: 'Noto Serif TC', serif; font-size: 0.95rem; font-weight: 500; color: var(--gold); margin-bottom: 6px; }
+  .concept-body { font-family: 'Noto Sans TC', sans-serif; font-size: 14px; color: var(--ink-mid); line-height: 1.8; }
+  .quotes-list { display: grid; gap: 1.5rem; }
+  .quote-block { padding: 1.5rem 1.75rem; border: 0.5px solid var(--border-strong); background: var(--cream-dark); position: relative; }
+  .quote-block::before { content: '"'; position: absolute; top: -0.5rem; left: 1.5rem; font-family: 'Playfair Display', serif; font-size: 4rem; color: var(--gold-pale); line-height: 1; pointer-events: none; }
+  .quote-en { font-family: 'Playfair Display', serif; font-style: italic; font-size: 14px; color: var(--ink-faint); margin-bottom: 8px; line-height: 1.7; }
+  .quote-zh { font-family: 'Noto Serif TC', serif; font-size: 1rem; color: var(--ink-mid); line-height: 1.9; }
+  .action-box { margin-top: 3.5rem; padding: 2rem 2.5rem; background: var(--ink); position: relative; }
+  .action-box::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--gold); }
+  .action-label { font-family: 'Noto Sans TC', sans-serif; font-size: 11px; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; margin-bottom: 1rem; }
+  .action-text { font-family: 'Noto Serif TC', serif; font-size: 1rem; color: var(--gold-pale); line-height: 2; }
+  .chapter-nav { margin-top: 4rem; padding-top: 2rem; border-top: 0.5px solid var(--border-strong); display: flex; justify-content: space-between; align-items: center; }
+  .nav-btn { font-family: 'Noto Sans TC', sans-serif; font-size: 13px; color: var(--ink-muted); text-decoration: none; transition: color 0.2s; }
+  .nav-btn:hover { color: var(--gold); }
+
+  footer {
+    border-top: 0.5px solid var(--border-strong);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    background: var(--cream-dark);
+  }
+  footer p {
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 12px;
+    color: var(--ink-faint);
+    letter-spacing: 0.05em;
+    line-height: 2;
+  }
+  footer a { color: var(--gold); text-decoration: none; }
+</style>
+</head>
+<body>
+<nav>
+  <a href="../index.html" class="nav-brand">窮查理的普通常識</a>
+  <div class="nav-links"><a href="../index.html">目錄</a><a href="ch04-07.html">下一篇 →</a></div>
+</nav>
+<div class="chapter-hero">
+  <div class="chapter-eyebrow">Chapter 04 · Lesson 06 · 演講篇</div>
+  <h1>像波克夏一樣投資</h1>
+  <p class="chapter-hero-desc">蒙格抨擊機構投資者過度依賴「顧問的顧問」以及採用「基金中的基金」這種層層剝削的複雜投資模式，每年吃掉高達 3% 的資產淨值作為「摩擦成本」。</p>
+  <div class="chapter-opening-quote"><p>「首要原則是，你千萬不能欺騙自己，而你正是那個最容易被自己欺騙的人。」</p></div>
+</div>
+<main>
+  <div class="content-section">
+    <div class="section-heading">🔑 核心觀念</div>
+    <div class="concepts-grid"><div class="concept-item"><div class="concept-title">拒絕「基金中的基金」模式</div><div class="concept-body">許多大學與基金會盲目跟風，聘請顧問來挑選顧問，這與過去聲名狼藉的伯尼·康菲爾德騙局模式如出一轍。</div></div>
+<div class="concept-item"><div class="concept-title">警惕高昂的摩擦成本</div><div class="concept-body">投資管理費加上頻繁進出的交易摩擦成本，每年可能吃掉 3% 的資產，這在未來股市報酬率下滑時，將對基金會造成致命的萎縮。</div></div>
+<div class="concept-item"><div class="concept-title">指數化投資的優勢</div><div class="concept-body">由於高昂的摩擦成本，對於一般的基金會來說，直接投資股票指數基金會是比現在的無槓桿主動選股更明智的選擇。</div></div>
+<div class="concept-item"><div class="concept-title">極度集中的合理性</div><div class="concept-body">將 90% 的資產集中在單一或少數幾家優秀的企業絕對是理性的選擇，過度分散只是一種平庸的防禦。</div></div>
+<div class="concept-item"><div class="concept-title">嚴格的自我批判</div><div class="concept-body">投資人必須學習物理學家費曼的心態——永遠對自己的判斷保持高度懷疑，因為你最容易欺騙的人就是你自己。</div></div>
+</div>
+  </div>
+  <div class="content-section">
+    <div class="section-heading">💬 演講金句</div>
+    <div class="quotes-list"><div class="quote-block"><div class="quote-en">"The first principle is that you must not fool yourself—and you are the easiest person to fool."</div><div class="quote-zh">首要原則是，你千萬不能欺騙自己，而你正是那個最容易被自己欺騙的人。</div></div>
+<div class="quote-block"><div class="quote-en">"Some things are worse for an endowment than losing relative performance."</div><div class="quote-zh">有些事情比基金會失去相對影響力更糟糕。</div></div>
+</div>
+  </div>
+  <div class="action-box">
+    <div class="action-label">⚡ 行動建議</div>
+    <div class="action-text">砍掉吸血的投資顧問與無謂的過度分散，要嘛買低成本指數基金，要嘛重倉死守極少數你真正熱愛的偉大企業！</div>
+  </div>
+  <div class="chapter-nav">
+    <a href="ch04-05.html" class="nav-btn">← 上一篇</a>
+    <a href="ch04-07.html" class="nav-btn">下一篇 →</a>
+  </div>
+</main>
+<footer>
+  <p>
+    基於《Poor Charlie's Almanack》by Charlie Munger &amp; Peter D. Kaufman<br>
+    僅供個人學習與研究使用 · <a href="https://github.com/hsinjou-feng/" target="_blank">@hsinjou-feng</a>
+  </p>
+</footer>
+</body>
+</html>

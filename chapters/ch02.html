@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 02：蒙格家的小孩談查理 — 窮查理的普通常識</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Noto+Serif+TC:wght@300;400;500;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root { --gold: #B8860B; --gold-light: #D4A017; --gold-pale: #F5EDD0; --gold-faint: #FDF9F0; --ink: #1A1208; --ink-mid: #3D2E10; --ink-muted: #7A6A4A; --ink-faint: #B8A882; --cream: #FAF6EE; --cream-dark: #F0E9D8; --border: rgba(184,134,11,0.2); --border-strong: rgba(184,134,11,0.45); }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--cream); color: var(--ink); font-family: 'Noto Serif TC', serif; font-weight: 300; line-height: 1.8; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(250,246,238,0.92); backdrop-filter: blur(8px); border-bottom: 0.5px solid var(--border-strong); padding: 0 2rem; height: 56px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-brand { font-family: 'Noto Serif TC', serif; font-size: 13px; font-weight: 500; letter-spacing: 0.15em; color: var(--gold); text-decoration: none; }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a { font-family: 'Noto Sans TC', sans-serif; font-size: 13px; color: var(--ink-muted); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold); }
+  .chapter-hero { padding: 120px 2rem 60px; max-width: 800px; margin: 0 auto; border-bottom: 0.5px solid var(--border); }
+  .chapter-eyebrow { font-family: 'Noto Sans TC', sans-serif; font-size: 11px; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; margin-bottom: 1rem; }
+  .chapter-hero h1 { font-family: 'Playfair Display', 'Noto Serif TC', serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; color: var(--ink); line-height: 1.2; margin-bottom: 1.5rem; }
+  .chapter-hero-desc { font-size: 1.05rem; color: var(--ink-muted); font-weight: 300; line-height: 2; max-width: 600px; }
+  .chapter-opening-quote { margin-top: 2.5rem; padding: 1.5rem 2rem; border-left: 3px solid var(--gold); background: var(--gold-faint); }
+  .chapter-opening-quote p { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-style: italic; color: var(--ink-mid); line-height: 1.8; }
+  main { max-width: 800px; margin: 0 auto; padding: 0 2rem 6rem; }
+  .content-section { padding: 3.5rem 0; border-bottom: 0.5px solid var(--border); }
+  .section-heading { font-family: 'Playfair Display', 'Noto Serif TC', serif; font-size: 1.5rem; font-weight: 700; color: var(--ink); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
+  .story-item { margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 0.5px dashed var(--border); }
+  .story-item:last-child { border-bottom: none; margin-bottom: 0; }
+  .story-title { font-family: 'Noto Serif TC', serif; font-size: 1rem; font-weight: 500; color: var(--ink); margin-bottom: 0.75rem; display: flex; align-items: baseline; gap: 0.6rem; }
+  .story-title::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--gold); flex-shrink: 0; vertical-align: middle; position: relative; top: -3px; }
+  .story-body { font-size: 15px; color: var(--ink-mid); line-height: 2; padding-left: 1.75rem; }
+  .story-body strong { color: var(--ink); font-weight: 500; }
+  .concepts-grid { display: grid; gap: 1rem; }
+  .concept-item { padding: 1.25rem 1.5rem; border: 0.5px solid var(--border); background: var(--gold-faint); transition: border-color 0.2s; }
+  .concept-item:hover { border-color: var(--border-strong); }
+  .concept-title { font-family: 'Noto Serif TC', serif; font-size: 0.95rem; font-weight: 500; color: var(--gold); margin-bottom: 6px; }
+  .concept-body { font-family: 'Noto Sans TC', sans-serif; font-size: 14px; color: var(--ink-mid); line-height: 1.8; }
+  .quotes-list { display: grid; gap: 1.5rem; }
+  .quote-block { padding: 1.5rem 1.75rem; border: 0.5px solid var(--border-strong); background: var(--cream-dark); position: relative; }
+  .quote-block::before { content: '"'; position: absolute; top: -0.5rem; left: 1.5rem; font-family: 'Playfair Display', serif; font-size: 4rem; color: var(--gold-pale); line-height: 1; pointer-events: none; }
+  .quote-en { font-family: 'Playfair Display', serif; font-style: italic; font-size: 14px; color: var(--ink-faint); margin-bottom: 8px; line-height: 1.7; }
+  .quote-zh { font-family: 'Noto Serif TC', serif; font-size: 1rem; color: var(--ink-mid); line-height: 1.9; }
+  .diagram-box { background: var(--ink); padding: 2.5rem; }
+  .diagram-title { font-family: 'Noto Sans TC', sans-serif; font-size: 11px; letter-spacing: 0.25em; color: var(--gold); text-transform: uppercase; margin-bottom: 1.5rem; }
+  .model-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem; }
+  .model-item { padding: 1rem; border: 0.5px solid rgba(184,134,11,0.35); text-align: center; }
+  .model-icon { font-size: 18px; margin-bottom: 6px; display: block; }
+  .model-name { font-family: 'Noto Serif TC', serif; font-size: 13px; color: var(--gold-pale); line-height: 1.5; }
+  .model-desc { font-family: 'Noto Sans TC', sans-serif; font-size: 11px; color: rgba(245,237,208,0.5); margin-top: 4px; line-height: 1.5; }
+  .action-box { margin-top: 3.5rem; padding: 2rem 2.5rem; background: var(--ink); position: relative; overflow: hidden; }
+  .action-box::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--gold); }
+  .action-label { font-family: 'Noto Sans TC', sans-serif; font-size: 11px; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; margin-bottom: 1rem; }
+  .action-text { font-family: 'Noto Serif TC', serif; font-size: 1rem; color: var(--gold-pale); line-height: 2; }
+  .chapter-nav { margin-top: 4rem; padding-top: 2rem; border-top: 0.5px solid var(--border-strong); display: flex; justify-content: space-between; align-items: center; }
+  .nav-btn { font-family: 'Noto Sans TC', sans-serif; font-size: 13px; color: var(--ink-muted); text-decoration: none; transition: color 0.2s; }
+  .nav-btn:hover { color: var(--gold); }
+
+  footer {
+    border-top: 0.5px solid var(--border-strong);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    background: var(--cream-dark);
+  }
+  footer p {
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 12px;
+    color: var(--ink-faint);
+    letter-spacing: 0.05em;
+    line-height: 2;
+  }
+  footer a { color: var(--gold); text-decoration: none; }
+</style>
+</head>
+<body>
+<nav>
+  <a href="../index.html" class="nav-brand">窮查理的普通常識</a>
+  <div class="nav-links">
+    <a href="../index.html">目錄</a>
+    <a href="ch03.html">下一章 →</a>
+  </div>
+</nav>
+
+<div class="chapter-hero">
+  <div class="chapter-eyebrow">Chapter 02 · 人物篇</div>
+  <h1>蒙格家的小孩談查理</h1>
+  <p class="chapter-hero-desc">從家庭成員的近距離觀察，揭示蒙格在私人領域中一貫的誠信與智慧，讓讀者看到一位立體的導師形象。</p>
+  <div class="chapter-opening-quote">
+    <p>「反過來想，總是反過來想。」— Charlie Munger</p>
+  </div>
+</div>
+
+<main>
+  <div class="content-section">
+    <div class="section-heading">📖 故事摘要</div>
+    <div class="story-item">
+      <div class="story-title">富蘭克林的自學之路</div>
+      <p class="story-body">班傑明·富蘭克林幾乎全靠自學，憑藉強烈的好奇心、勤奮與客觀的心智，在科學、政治、商業等多個領域取得巨大成功，這成為蒙格建立<strong>跨學科思維的完美典範</strong>。</p>
+    </div>
+    <div class="story-item">
+      <div class="story-title">小紅母雞的覺醒</div>
+      <p class="story-body">面對商學院教授們忽視跨學科思維的缺陷，蒙格效法童話《小紅母雞》中「那我自己來」的精神，決定自己建立一套能看清世界非理性模式的思維系統。</p>
+    </div>
+    <div class="story-item">
+      <div class="story-title">泰德·威廉斯的 77 宮格打擊區</div>
+      <p class="story-body">棒球史上最後一位四成打擊率的打者威廉斯，將打擊區劃分為 77 個格子，即使有被三振的風險，他也只在球落入「最佳打擊區」時才揮棒。蒙格藉此強調<strong>投資必須具備極度的紀律與耐心</strong>。</p>
+    </div>
+    <div class="story-item">
+      <div class="story-title">普朗克與他的司機</div>
+      <p class="story-body">物理學家普朗克的司機背下了主人的演講稿並上台代講，卻在面對台下專業提問時原形畢露。這個故事揭示了「真知」與只會鸚鵡學舌的<strong>「司機知識」</strong>之間的巨大差異——必須認清自己的能力邊界。</p>
+    </div>
+    <div class="story-item">
+      <div class="story-title">IBM 創辦人的自知之明</div>
+      <p class="story-body">湯瑪斯·華生曾說「我不是天才，我只是在某些領域很聰明，然後我就只待在那些領域。」這句話成為蒙格<strong>嚴守「能力圈」的最佳寫照</strong>。</p>
+    </div>
+    <div class="story-item">
+      <div class="story-title">買下路易斯安那與阿拉斯加</div>
+      <p class="story-body">美國以極低的每英畝單價買下大片領土，雖然曾被外界嘲笑，但最終帶來巨大的戰略與資源價值。這完美說明了「<strong>價格是你付出的，價值是你得到的</strong>」這項真理。</p>
+    </div>
+  </div>
+
+  <div class="content-section">
+    <div class="section-heading">🔑 核心觀念</div>
+    <div class="concepts-grid">
+      <div class="concept-item">
+        <div class="concept-title">多重思維模型（Multiple Mental Models）</div>
+        <div class="concept-body">絕不能只用單一學科的視角看世界，必須掌握數學、物理、心理學等各基礎學科約 100 個核心概念，將其交織成大腦中的思維格柵。</div>
+      </div>
+      <div class="concept-item">
+        <div class="concept-title">魯拉帕路薩效應（Lollapalooza Effect）</div>
+        <div class="concept-body">當多種思維模型或力量朝同一個方向共同發揮作用時，會產生相互疊加、極端且巨大的核爆級效應。</div>
+      </div>
+      <div class="concept-item">
+        <div class="concept-title">能力圈（Circle of Competence）</div>
+        <div class="concept-body">清楚知道自己知識的邊界在哪裡。蒙格會將投資分為「是」、「否」與「太難以理解」三類，絕不碰不懂的東西。</div>
+      </div>
+      <div class="concept-item">
+        <div class="concept-title">反向思考（Invert, always invert）</div>
+        <div class="concept-body">與其思考如何成功，不如先弄清楚「我會死在哪裡」，然後永遠不要去那裡；從避免失敗入手，往往能更輕易地解決複雜問題。</div>
+      </div>
+      <div class="concept-item">
+        <div class="concept-title">耐心等待與重倉出擊</div>
+        <div class="concept-body">投資就像等一顆速度慢、直直落入甜區的「好球」。平時應該抱持極度的耐心「坐著不動」，一旦極佳機會出現，就必須果斷地重倉出擊。</div>
+      </div>
+      <div class="concept-item">
+        <div class="concept-title">護城河理論（Moats）</div>
+        <div class="concept-body">比起平庸的企業，應該以合理價格買進擁有持久競爭優勢（不斷拓寬的護城河）的偉大企業。</div>
+      </div>
+      <div class="concept-item">
+        <div class="concept-title">雙軌分析法（Two-Track Analysis）</div>
+        <div class="concept-body">面對問題時，第一條軌道先客觀分析理性的利益與機率；第二條軌道則評估大腦在潛意識下可能產生的心理學誤判因素。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-section">
+    <div class="section-heading">🧠 思維格柵圖解</div>
+    <div class="diagram-box">
+      <div class="diagram-title">蒙格的多重思維模型框架</div>
+      <div class="model-grid">
+        <div class="model-item"><span class="model-icon">📐</span><div class="model-name">數學</div><div class="model-desc">機率、複利、排列組合</div></div>
+        <div class="model-item"><span class="model-icon">⚛️</span><div class="model-name">物理學</div><div class="model-desc">第一性原理、臨界質量</div></div>
+        <div class="model-item"><span class="model-icon">🧬</span><div class="model-name">生物學</div><div class="model-desc">演化、生態適應</div></div>
+        <div class="model-item"><span class="model-icon">🧠</span><div class="model-name">心理學</div><div class="model-desc">25 種人類誤判傾向</div></div>
+        <div class="model-item"><span class="model-icon">💹</span><div class="model-name">微觀經濟學</div><div class="model-desc">護城河、規模優勢</div></div>
+        <div class="model-item"><span class="model-icon">📜</span><div class="model-name">歷史學</div><div class="model-desc">從歷史中學習決策</div></div>
+      </div>
+      <div style="margin-top: 2rem; padding: 1.25rem; border: 0.5px solid rgba(184,134,11,0.4); background: rgba(184,134,11,0.08);">
+        <div style="font-family: 'Noto Serif TC', serif; font-size: 14px; color: var(--gold-pale); line-height: 2; text-align: center;">
+          所有模型交織 → 思維格柵 → 魯拉帕路薩效應（核爆級洞察）
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-section">
+    <div class="section-heading">💬 書中金句</div>
+    <div class="quotes-list">
+      <div class="quote-block">
+        <div class="quote-en">"To the man with a hammer, the world looks like a nail."</div>
+        <div class="quote-zh">對一個只有鐵鎚的人來說，世界上的每個問題看起來都像釘子。</div>
+      </div>
+      <div class="quote-block">
+        <div class="quote-en">"All I want to know is where I'm going to die, so I'll never go there."</div>
+        <div class="quote-zh">我只想知道我會死在哪裡，然後我永遠不去那邊。</div>
+      </div>
+      <div class="quote-block">
+        <div class="quote-en">"A great business at a fair price is superior to a fair business at a great price."</div>
+        <div class="quote-zh">以合理的價格買進偉大的企業，遠勝過以極佳的價格買進平庸的企業。</div>
+      </div>
+      <div class="quote-block">
+        <div class="quote-en">"No wise pilot, no matter how great his talent and experience, fails to use his checklist."</div>
+        <div class="quote-zh">沒有任何聰明的飛行員，無論他的天賦與經驗有多高，會不使用他的檢查清單。</div>
+      </div>
+      <div class="quote-block">
+        <div class="quote-en">"Acknowledging what you don't know is the dawning of wisdom."</div>
+        <div class="quote-zh">承認你不知道的東西，是智慧的開端。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="action-box">
+    <div class="action-label">⚡ 行動建議</div>
+    <div class="action-text">用跨學科模型避開致命錯誤，死守能力圈耐心等待絕佳「好球」，看準後重倉出擊並坐著不動。</div>
+  </div>
+
+  <div class="chapter-nav">
+    <a href="ch01.html" class="nav-btn">← 第 1 章：查理·蒙格傳略</a>
+    <a href="ch03.html" class="nav-btn">第 3 章：蒙格主義 →</a>
+  </div>
+</main>
+<footer>
+  <p>
+    基於《Poor Charlie's Almanack》by Charlie Munger &amp; Peter D. Kaufman<br>
+    僅供個人學習與研究使用 · <a href="https://github.com/hsinjou-feng/" target="_blank">@hsinjou-feng</a>
+  </p>
+</footer>
+</body>
+</html>

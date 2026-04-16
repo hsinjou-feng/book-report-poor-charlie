@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>窮查理的普通常識 — 深度學習筆記</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Noto+Serif+TC:wght@300;400;500;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #B8860B;
+    --gold-light: #D4A017;
+    --gold-pale: #F5EDD0;
+    --gold-faint: #FDF9F0;
+    --ink: #1A1208;
+    --ink-mid: #3D2E10;
+    --ink-muted: #7A6A4A;
+    --ink-faint: #B8A882;
+    --cream: #FAF6EE;
+    --cream-dark: #F0E9D8;
+    --border: rgba(184,134,11,0.2);
+    --border-strong: rgba(184,134,11,0.45);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 300;
+    line-height: 1.8;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(250,246,238,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 0.5px solid var(--border-strong);
+    padding: 0 2rem;
+    height: 56px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-brand {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a {
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--ink-muted);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 120px 2rem 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg-lines {
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 59px,
+        rgba(184,134,11,0.07) 60px
+      );
+    pointer-events: none;
+  }
+  .hero-ornament {
+    font-size: 13px;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: 400;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+  }
+  .hero-ornament::before,
+  .hero-ornament::after {
+    content: '—';
+    margin: 0 0.8em;
+    opacity: 0.5;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', 'Noto Serif TC', serif;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 900;
+    color: var(--ink);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin-bottom: 1rem;
+  }
+  .hero-subtitle {
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--ink-muted);
+    font-weight: 300;
+    max-width: 560px;
+    margin: 0 auto 3rem;
+    line-height: 2;
+  }
+  .hero-cta {
+    display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+    margin-bottom: 5rem;
+  }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 0.5em;
+    background: var(--ink);
+    color: var(--gold-pale);
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    padding: 13px 28px;
+    border: 1px solid var(--ink);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-primary:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--ink);
+  }
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 0.5em;
+    background: transparent;
+    color: var(--ink-mid);
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    padding: 13px 28px;
+    border: 0.5px solid var(--border-strong);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-secondary:hover {
+    background: var(--gold-pale);
+    border-color: var(--gold);
+  }
+
+  /* STATS */
+  .stats-row {
+    display: flex; gap: 3rem; justify-content: center; flex-wrap: wrap;
+  }
+  .stat-item { text-align: center; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--gold);
+    display: block;
+    line-height: 1.1;
+  }
+  .stat-label {
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--ink-faint);
+    letter-spacing: 0.1em;
+    display: block;
+    margin-top: 4px;
+  }
+
+  /* DIVIDER */
+  .section-divider {
+    border: none;
+    height: 0.5px;
+    background: linear-gradient(90deg, transparent, var(--border-strong), transparent);
+    margin: 0 auto;
+    max-width: 800px;
+  }
+
+  /* ABOUT SECTION */
+  .about {
+    padding: 100px 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .section-label {
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+  .about h2 {
+    font-family: 'Playfair Display', 'Noto Serif TC', serif;
+    font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 2rem;
+    line-height: 1.3;
+  }
+  .about-body {
+    font-size: 1.05rem;
+    color: var(--ink-mid);
+    line-height: 2;
+    max-width: 640px;
+  }
+  .about-meta {
+    margin-top: 3rem;
+    padding: 2rem;
+    border: 0.5px solid var(--border-strong);
+    background: var(--gold-faint);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .meta-item {}
+  .meta-item .meta-key {
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .meta-item .meta-val {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .munger-quote {
+    margin-top: 3rem;
+    padding: 1.5rem 2rem;
+    border-left: 3px solid var(--gold);
+    background: var(--cream-dark);
+  }
+  .munger-quote blockquote {
+    font-family: 'Playfair Display', 'Noto Serif TC', serif;
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--ink-mid);
+    line-height: 1.9;
+  }
+  .munger-quote cite {
+    display: block;
+    margin-top: 0.75rem;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 12px;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    font-style: normal;
+  }
+
+  /* CHAPTERS */
+  .chapters { padding: 80px 2rem 120px; }
+  .chapters-inner { max-width: 1000px; margin: 0 auto; }
+  .chapters-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+  .chapters-header h2 {
+    font-family: 'Playfair Display', 'Noto Serif TC', serif;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 1rem;
+  }
+  .chapters-header p {
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 14px;
+    color: var(--ink-muted);
+    letter-spacing: 0.05em;
+  }
+
+  /* PART HEADER */
+  .part-header {
+    display: flex; align-items: center; gap: 1.5rem;
+    margin: 3.5rem 0 1.5rem;
+  }
+  .part-label {
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .part-line {
+    flex: 1;
+    height: 0.5px;
+    background: var(--border-strong);
+  }
+
+  /* CHAPTER CARD */
+  .chapter-card {
+    display: block;
+    text-decoration: none;
+    background: transparent;
+    border: 0.5px solid var(--border);
+    padding: 1.75rem 2rem;
+    margin-bottom: 1rem;
+    position: relative;
+    transition: all 0.2s;
+    overflow: hidden;
+  }
+  .chapter-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: transparent;
+    transition: background 0.2s;
+  }
+  .chapter-card:hover {
+    background: var(--gold-faint);
+    border-color: var(--border-strong);
+  }
+  .chapter-card:hover::before { background: var(--gold); }
+  .chapter-meta {
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+  .chapter-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .chapter-desc {
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 13px;
+    color: var(--ink-muted);
+    line-height: 1.7;
+  }
+  .chapter-arrow {
+    position: absolute; right: 2rem; top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: var(--border-strong);
+    transition: color 0.2s, transform 0.2s;
+  }
+  .chapter-card:hover .chapter-arrow {
+    color: var(--gold);
+    transform: translateY(-50%) translateX(4px);
+  }
+
+  /* CHAPTER GRID for Ch4 lessons */
+  .lessons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  .lesson-card {
+    display: block;
+    text-decoration: none;
+    background: transparent;
+    border: 0.5px solid var(--border);
+    padding: 1.5rem;
+    position: relative;
+    transition: all 0.2s;
+  }
+  .lesson-card:hover {
+    background: var(--gold-faint);
+    border-color: var(--border-strong);
+  }
+  .lesson-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--gold-pale);
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  .lesson-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 6px;
+    line-height: 1.5;
+  }
+  .lesson-desc {
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 12px;
+    color: var(--ink-muted);
+    line-height: 1.7;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 0.5px solid var(--border-strong);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    background: var(--cream-dark);
+  }
+  footer p {
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 12px;
+    color: var(--ink-faint);
+    letter-spacing: 0.05em;
+    line-height: 2;
+  }
+  footer a { color: var(--gold); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-brand">窮查理的普通常識</a>
+  <div class="nav-links">
+    <a href="#chapters">章節目錄</a>
+    <a href="#about">關於本書</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg-lines"></div>
+  <div class="hero-ornament">深度學習筆記</div>
+  <h1>窮查理的普通常識</h1>
+  <p class="hero-subtitle">
+    Charlie Munger 傳奇人生的智慧結晶——透過獨特的思考框架，建立深邃的商業洞察力與人生價值觀。
+  </p>
+  <div class="hero-cta">
+    <a href="#chapters" class="btn-primary">⚡ 開始閱讀</a>
+    <a href="#about" class="btn-secondary">📖 關於本書</a>
+  </div>
+  <div class="stats-row">
+    <div class="stat-item">
+      <span class="stat-num">4</span>
+      <span class="stat-label">主要章節</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">11</span>
+      <span class="stat-label">經典演講</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">25</span>
+      <span class="stat-label">人類誤判心理學</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">100+</span>
+      <span class="stat-label">核心思維模型</span>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section class="about" id="about">
+  <div class="section-label">關於本書</div>
+  <h2>查理·蒙格智慧的完整地圖</h2>
+  <p class="about-body">
+    這本書不僅是名言錄，更是查理·蒙格 (Charles T. Munger) 傳奇人生的智慧結晶。其核心主旨在於透過蒙格獨特的思考框架，引導讀者建立深邃的商業洞察力與人生價值觀。
+  </p>
+
+  <div class="about-meta">
+    <div class="meta-item">
+      <span class="meta-key">原著</span>
+      <span class="meta-val">Poor Charlie's Almanack</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-key">作者</span>
+      <span class="meta-val">Charles T. Munger</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-key">編撰</span>
+      <span class="meta-val">Peter D. Kaufman</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-key">核心主旨</span>
+      <span class="meta-val">世俗智慧與跨學科思維</span>
+    </div>
+  </div>
+
+  <div class="munger-quote">
+    <blockquote>
+      「在我的一生中，我沒有見過任何一個有智慧的人（在廣泛的領域中）不是一直在閱讀的——沒有，一個都沒有。」
+    </blockquote>
+    <cite>— Charlie Munger</cite>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section class="chapters" id="chapters">
+  <div class="chapters-inner">
+    <div class="chapters-header">
+      <div class="section-label">章節目錄</div>
+      <h2>逐章深度閱讀</h2>
+      <p>每章精煉故事摘要、核心觀念、書中金句與行動建議</p>
+    </div>
+
+    <div class="part-header">
+      <span class="part-label">人物篇</span>
+      <div class="part-line"></div>
+    </div>
+
+    <a href="chapters/ch01.html" class="chapter-card">
+      <div class="chapter-meta">Chapter 01</div>
+      <div class="chapter-title">查理·蒙格傳略</div>
+      <div class="chapter-desc">蒙格的人格特質與知識體系奠基，解析他如何從法律背景轉向投資大師</div>
+      <span class="chapter-arrow">→</span>
+    </a>
+
+    <a href="chapters/ch02.html" class="chapter-card">
+      <div class="chapter-meta">Chapter 02</div>
+      <div class="chapter-title">蒙格家的小孩談查理</div>
+      <div class="chapter-desc">從家庭成員的近距離觀察，揭示蒙格在私人領域中一貫的誠信與智慧</div>
+      <span class="chapter-arrow">→</span>
+    </a>
+
+    <div class="part-header">
+      <span class="part-label">思想篇</span>
+      <div class="part-line"></div>
+    </div>
+
+    <a href="chapters/ch03.html" class="chapter-card">
+      <div class="chapter-meta">Chapter 03</div>
+      <div class="chapter-title">蒙格主義</div>
+      <div class="chapter-desc">理解「普世智慧」的核心門徑，勾勒跨學科思考與思維模型的基本框架</div>
+      <span class="chapter-arrow">→</span>
+    </a>
+
+    <div class="part-header">
+      <span class="part-label">演講篇</span>
+      <div class="part-line"></div>
+    </div>
+
+    <div style="margin-bottom: 0.5rem;">
+      <div style="padding: 1rem 0; font-family: 'Noto Sans TC', sans-serif; font-size: 13px; color: var(--ink-muted);">
+        Chapter 04 收錄 11 篇橫跨數十年的里程碑演講，從「多元思維模型」到「人類誤判心理學」
+      </div>
+    </div>
+
+    <div class="lessons-grid">
+      <a href="chapters/ch04-01.html" class="lesson-card">
+        <div class="lesson-num">01</div>
+        <div class="lesson-title">如何讓自己生活悲慘</div>
+        <div class="lesson-desc">反向思考的藝術，七道保證失敗的處方</div>
+      </a>
+      <a href="chapters/ch04-02.html" class="lesson-card">
+        <div class="lesson-num">02</div>
+        <div class="lesson-title">普世智慧的投資應用</div>
+        <div class="lesson-desc">多重思維模型與同注分彩法市場</div>
+      </a>
+      <a href="chapters/ch04-03.html" class="lesson-card">
+        <div class="lesson-num">03</div>
+        <div class="lesson-title">論基本的、普世的智慧</div>
+        <div class="lesson-desc">打破學科邊界，警惕意識形態的毒害</div>
+      </a>
+      <a href="chapters/ch04-04.html" class="lesson-card">
+        <div class="lesson-num">04</div>
+        <div class="lesson-title">關於實用思維的實務思考</div>
+        <div class="lesson-desc">從零打造可口可樂的思想實驗</div>
+      </a>
+      <a href="chapters/ch04-05.html" class="lesson-card">
+        <div class="lesson-num">05</div>
+        <div class="lesson-title">專業人士需要跨領域技能</div>
+        <div class="lesson-desc">效法飛行員訓練，建立決策檢查清單</div>
+      </a>
+      <a href="chapters/ch04-06.html" class="lesson-card">
+        <div class="lesson-num">06</div>
+        <div class="lesson-title">像波克夏一樣投資</div>
+        <div class="lesson-desc">拒絕層層剝削，極度集中的合理性</div>
+      </a>
+      <a href="chapters/ch04-07.html" class="lesson-card">
+        <div class="lesson-num">07</div>
+        <div class="lesson-title">財富效應與灰金效應</div>
+        <div class="lesson-desc">偽貪污效應與防範群眾愚蠢</div>
+      </a>
+      <a href="chapters/ch04-08.html" class="lesson-card">
+        <div class="lesson-num">08</div>
+        <div class="lesson-title">2003 年的金融大醜聞</div>
+        <div class="lesson-desc">溫水煮青蛙的造假寓言</div>
+      </a>
+      <a href="chapters/ch04-09.html" class="lesson-card">
+        <div class="lesson-num">09</div>
+        <div class="lesson-title">學院派經濟學的九大缺陷</div>
+        <div class="lesson-desc">物理學嫉妒與心理學無知的盲點</div>
+      </a>
+      <a href="chapters/ch04-10.html" class="lesson-card">
+        <div class="lesson-num">10</div>
+        <div class="lesson-title">蒙格的普通常識</div>
+        <div class="lesson-desc">持續學習的機器，當之無愧的信任網</div>
+      </a>
+      <a href="chapters/ch04-11.html" class="lesson-card">
+        <div class="lesson-num">11</div>
+        <div class="lesson-title">人類誤判心理學</div>
+        <div class="lesson-desc">25 種導致誤判的心理傾向完整解析</div>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <p>
+    基於《Poor Charlie's Almanack》by Charlie Munger &amp; Peter D. Kaufman<br>
+    僅供個人學習與研究使用 · <a href="https://github.com/hsinjou-feng/" target="_blank" style="color:var(--accent)">@hsinjou-feng</a>
+  </p>
+</footer>
+
+</body>
+</html>
